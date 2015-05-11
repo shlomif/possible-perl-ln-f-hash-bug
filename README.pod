@@ -1,0 +1,12 @@
+=encoding utf-8
+
+=head1 How to reproduce
+
+This is a possible bug in perl (including what will become perl-5.22.0).
+
+Run from the command line:
+
+    perl -ln euler-357-v1-enum-divisors.pl f.txt .
+
+=cut
+

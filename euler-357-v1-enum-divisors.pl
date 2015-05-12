@@ -1,20 +1,20 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -ln
 
 use strict;
 use warnings;
 
 s/\A([0-9]+):\s*//;
 my $n = $1;
-my %f;
+my %factors;
 foreach my $f (split/\s+/, $_)
 {
     die if $f !~ /\S/;
     print"F=$f\n";
-    $f{$f}++;
+    $factors{$f}++;
 }
 my $root = sqrt($n);
 
-sub f
+sub my_func
 {
     if (!@_)
     {
@@ -23,12 +23,12 @@ sub f
     else
     {
         my $f = shift;
-        print "F/=$f ; %F = @{[%f]}\n";
-        my @r = f(@_);
+        print "F/=$f ; %factors = @{[%factors]}\n";
+        my @r = my_func(@_);
 
         my $x = 1;
         my @ret;
-        for my $e (0 .. $f{$f})
+        for my $e (0 .. $factors{$f})
         {
             push @ret, map { $x * $_ } @r;
         }
@@ -38,6 +38,6 @@ sub f
         }
         return @ret;
     }
-}
+};
 
-print join " ", $n, (sort { $a <=> $b } grep { $_ > 1 and $_ <= $root } f(keys(%f)));
+print join " ", $n, (sort { $a <=> $b } grep { $_ > 1 and $_ <= $root } my_func(keys(%factors)));

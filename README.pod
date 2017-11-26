@@ -8,5 +8,7 @@ Run from the command line:
 
     perl -ln euler-357-v1-enum-divisors.pl f.txt .
 
+Reported here: L<https://www.nntp.perl.org/group/perl.perl5.porters/2015/05/msg227916.html> .
+
 =cut
 
